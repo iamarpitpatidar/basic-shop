@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="w-full text-center my-0 mx-auto py-0 px-10">
-      <div class="grid" style="grid-template-columns: 1fr 2fr">
+      <div class="grid" style="grid-template-columns: 2fr 1fr">
         <div class="flex items-center text-white">
           <span class="text-sm font-mono">Copyright {{ name }} Games {{ new Date().getFullYear() }}</span>
         </div>
