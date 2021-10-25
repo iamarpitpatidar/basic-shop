@@ -1,0 +1,30 @@
+{
+  "name": "shop",
+  "version": "0.0.3",
+  "private": true,
+  "scripts": {
+    "dev": "vite --host",
+    "build": "yarn verison --minor && vite build && yarn zip",
+    "build:major": "yarn version --major && vite build && yarn zip",
+    "serve": "vite preview",
+    "zip": "node scripts/build-zip.js"
+  },
+  "dependencies": {
+    "vue": "^3.2.20",
+    "vue-router": "^4.0.12"
+  },
+  "devDependencies": {
+    "@headlessui/vue": "^1.4.1",
+    "@heroicons/vue": "^1.0.5",
+    "@tailwindcss/aspect-ratio": "^0.3.0",
+    "@tailwindcss/forms": "^0.4.0-alpha.1",
+    "@tailwindcss/line-clamp": "^0.2.2",
+    "@tailwindcss/typography": "^0.5.0-alpha.2",
+    "@types/tailwindcss": "^2.2.1",
+    "@vitejs/plugin-vue": "^1.9.3",
+    "archiver": "^5.3.0",
+    "autoprefixer": "^10.3.7",
+    "tailwindcss": "^3.0.0-alpha.1",
+    "vite": "^2.6.10"
+  }
+}
