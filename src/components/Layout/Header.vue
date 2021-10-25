@@ -1,6 +1,6 @@
 <template>
   <header class="navbar shadow" v-if="$route.meta.title">
-    <div class="w-full text-center my-0 mx-auto py-0 px-10">
+    <div class="w-full text-center my-0 mx-auto py-0 px-4 sm:px-8 md:px-10">
       <div class="grid" style="grid-template-columns: 2fr 1fr">
         <div class="w-32">
           <a href="/" class="w-32">
