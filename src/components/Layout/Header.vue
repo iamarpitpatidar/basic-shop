@@ -17,7 +17,7 @@
   </header>
 </template>
 
-<script>
+<script lang="ts">
 import Cart from '@/components/Cart.vue'
 
 export default {

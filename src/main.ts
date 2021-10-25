@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import './styles/tailwind.css'
 import './styles/style.css'
 import App from './App.vue'
-import { routes } from './routes.js'
+import { routes } from './routes'
 import store from './store'
 import { createRouter, createWebHistory } from 'vue-router'
 

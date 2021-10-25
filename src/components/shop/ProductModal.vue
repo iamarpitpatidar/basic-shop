@@ -61,7 +61,8 @@
     </Dialog>
   </TransitionRoot>
 </template>
-<script>
+
+<script lang="ts">
 import {
   TransitionRoot,
   TransitionChild,

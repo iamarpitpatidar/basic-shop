@@ -31,7 +31,7 @@
   </footer>
 </template>
 
-<script>
+<script lang="ts">
 import config from '../../config'
 
 export default {

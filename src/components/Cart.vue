@@ -60,7 +60,7 @@
   </Popover>
 </template>
 
-<script>
+<script lang="ts">
 import {Popover, PopoverButton, PopoverPanel} from '@headlessui/vue'
 
 export default {

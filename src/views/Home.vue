@@ -10,7 +10,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import config from '../config'
 import Hero from '@/components/Hero.vue'
 import Product from '@/components/shop/Product.vue'
@@ -32,7 +32,7 @@ export default {
     ProductModal
   },
   methods: {
-    modalAction: function (action, data = {}) {
+    modalAction: function (action:String, data = {}) {
       this.modal.isOpen = action === 'open'
       this.modal.data = data
     }

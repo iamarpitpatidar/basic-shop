@@ -1,7 +1,5 @@
 'use strict'
 
-import path from 'path'
-
 export default {
     discordInvite: 'https://discord.com/channels/@me',
     facebookInvite: 'https://facebook.com/',
