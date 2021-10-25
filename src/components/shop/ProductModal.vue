@@ -1,5 +1,5 @@
 <template>
-  <TransitionRoot appear :show="isOpen" as="template">
+  <TransitionRoot appear :show="isModalOpen" as="template">
     <Dialog as="div" @close="closeModal">
       <div class="fixed inset-0 z-10 overflow-y-auto">
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
@@ -63,6 +63,8 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from "vue";
+import { mapState, mapMutations } from "vuex";
 import {
   TransitionRoot,
   TransitionChild,
@@ -71,7 +73,7 @@ import {
   DialogTitle,
 } from '@headlessui/vue'
 
-export default {
+export default defineComponent({
   components: {
     TransitionRoot,
     TransitionChild,
@@ -79,17 +81,11 @@ export default {
     DialogOverlay,
     DialogTitle,
   },
-  props: {
-    isOpen: Boolean,
-    item: {
-      name: String
-    }
+  computed: {
+    ...mapState(['isModalOpen'])
   },
-  emits: ['close'],
   methods: {
-    closeModal: function() {
-      this.$emit('close')
-    }
+    ...mapMutations(['closeModal'])
   }
-}
+})
 </script>
