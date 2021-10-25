@@ -1,13 +1,14 @@
 {
   "name": "shop",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "private": true,
   "scripts": {
     "dev": "vite --host",
-    "build": "yarn version --minor && vite build && yarn zip",
+    "build": "vite build && yarn zip",
     "build:major": "yarn version --major && vite build && yarn zip",
     "serve": "vite preview",
-    "zip": "node scripts/build-zip.js"
+    "zip": "node scripts/build-zip.js",
+    "version:minor": "yarn version --minor"
   },
   "dependencies": {
     "vue": "^3.2.20",
