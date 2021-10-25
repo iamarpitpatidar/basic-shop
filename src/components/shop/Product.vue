@@ -29,7 +29,10 @@
 </template>
 
 <script lang="ts">
-export default {
+import { defineComponent } from "vue";
+import { mapMutations } from "vuex";
+
+export default defineComponent({
   props: {
     item: {
       id: {
@@ -58,7 +61,6 @@ export default {
       }
     }
   },
-  emits: ['viewDetails'],
   computed: {
     onSale: function () {
       return this.item.tags.length && this.item.tags.includes('sale')
@@ -68,11 +70,7 @@ export default {
     }
   },
   methods: {
-    openModal: function () {
-      this.$store.commit('increment')
-        console.log(this.$store.state.count)
-      this.$emit('viewDetails')
-    }
+    ...mapMutations(['openModal'])
   }
-}
+})
 </script>
