@@ -69,6 +69,8 @@ export default {
   },
   methods: {
     openModal: function () {
+      this.$store.commit('increment')
+        console.log(this.$store.state.count)
       this.$emit('viewDetails')
     }
   }

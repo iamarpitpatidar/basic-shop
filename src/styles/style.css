@@ -3,7 +3,9 @@
 :root {
     --primary: #6b54b6
 }
-
+body {
+    overflow-x: hidden;
+}
 @font-face {
     font-family: "Friz";
     src: url("/font/Friz-Quadrata/Regular.ttf");
