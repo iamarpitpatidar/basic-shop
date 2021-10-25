@@ -29,37 +29,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, PropType } from "vue";
 import { mapMutations } from "vuex";
+import { Product } from "../../types/product";
 
 export default defineComponent({
   props: {
-    item: {
-      id: {
-        type: Number,
-        required: true
-      },
-      name: {
-        type: String,
-        required: true
-      },
-      description: String,
-      price: {
-        type: Number,
-        required: true
-      },
-      currency: {
-        type: String,
-        required: true
-      },
-      image: String,
-      quantity: Object,
-      tags: [String],
-      salePrice: {
-        type: Number,
-        required: true
-      }
-    }
+    item: Object as PropType<Product>
   },
   computed: {
     onSale: function () {
