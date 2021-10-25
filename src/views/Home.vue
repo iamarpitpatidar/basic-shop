@@ -32,9 +32,6 @@ export default {
     ProductModal
   },
   methods: {
-    openModal: function () {
-      this.modalAction('open', { name: 'Spider' })
-    },
     modalAction: function (action, data = {}) {
       this.modal.isOpen = action === 'open'
       this.modal.data = data

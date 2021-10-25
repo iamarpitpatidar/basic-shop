@@ -50,7 +50,7 @@
     font-size: 14px;
     line-height: .1em;
     text-align: center;
-    z-index: 100;
+    z-index: 9;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
