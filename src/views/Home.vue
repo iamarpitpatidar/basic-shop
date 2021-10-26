@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import config from '../config'
+import config from '@/config'
 import Hero from '@/components/Hero.vue'
 import Product from '@/components/shop/Product.vue'
 import ProductModal from "@/components/shop/ProductModal.vue";

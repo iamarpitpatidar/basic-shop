@@ -5,10 +5,10 @@
       <span class="tag sold" v-else-if="soldOut">SALE</span>
       <img :src="item.image" alt="image">
       <div class="absolute w-full h-full top-0 left-0 p-3 btn-wrapper">
-        <div class="text-center table relative align-middle h-full">
+        <div class="text-center table relative align-middle h-full mx-auto">
           <div class="relative table-cell align-middle">
-            <button class="product-btn my-2" @click="openModal">Quick View</button>
-            <button class="product-btn my-2">Add to Cart</button>
+            <button class="product-btn my-2" @click="viewDetails">Quick View</button>
+            <button class="product-btn my-2" @click="addProduct">Add to Cart</button>
           </div>
         </div>
       </div>
@@ -31,7 +31,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
 import { mapMutations } from "vuex";
-import { Product } from "../../types/product";
+import { Product } from "@/types/product";
 
 export default defineComponent({
   props: {
@@ -46,7 +46,13 @@ export default defineComponent({
     }
   },
   methods: {
-    ...mapMutations(['openModal'])
+    ...mapMutations(['openModal', 'addToCart']),
+    viewDetails() {
+      this.openModal(this.item)
+    },
+    addProduct() {
+      this.addToCart(this.item)
+    }
   }
 })
 </script>

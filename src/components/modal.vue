@@ -1,5 +1,5 @@
 <template>
-  <TransitionRoot appear :show="isOpen" as="template">
+  <TransitionRoot appear :show="isModalOpen" as="template">
     <Dialog as="div" @close="closeModal">
       <div class="fixed inset-0 z-10 overflow-y-auto">
         <div class="fixed inset-0 bg-gray-900 bg-opacity-90 transition-opacity" aria-hidden="true"></div>
@@ -15,9 +15,11 @@
           >
             <DialogOverlay class="fixed inset-0" />
           </TransitionChild>
+
           <span class="inline-block h-screen align-middle" aria-hidden="true">
             &#8203;
           </span>
+
           <TransitionChild
               as="template"
               enter="duration-300 ease-out"
@@ -32,11 +34,17 @@
             >
               <DialogTitle
                   as="h3"
-                  class="text-lg text-center font-medium leading-6 text-gray-900"
-              >{{ product.name }}</DialogTitle>
+                  class="text-lg font-medium leading-6 text-gray-900"
+              >
+                Payment successful
+              </DialogTitle>
               <div class="mt-2">
-                <p class="text-sm text-gray-500">{{ product.description }}</p>
+                <p class="text-sm text-gray-500">
+                  Your payment has been successfully submitted. We’ve sent you
+                  an email with all of the details of your order.
+                </p>
               </div>
+
               <div class="mt-4">
                 <button
                     type="button"
@@ -74,10 +82,7 @@ export default defineComponent({
     DialogTitle,
   },
   computed: {
-    ...mapState({
-      isOpen: 'isModalOpen',
-      product: 'modalData'
-    })
+    ...mapState(['isModalOpen'])
   },
   methods: {
     ...mapMutations(['closeModal'])
