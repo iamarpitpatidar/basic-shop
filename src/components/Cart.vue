@@ -13,7 +13,7 @@
         leave-from-class="translate-y-0 opacity-100"
         leave-to-class="translate-y-1 opacity-0"
     >
-      <PopoverPanel class="absolute z-10 w-screen max-w-sm px-4 mt-3 transform -translate-x-1/2 left-1/2 sm:px-0 lg:max-w-3xl">
+      <PopoverPanel class="cart absolute z-10 right-0 w-screen max-w-sm mt-3 origin-top-right rounded-md shadow-lg focus:outline-none">
         <div
             class="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5"
         >
