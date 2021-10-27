@@ -9,7 +9,7 @@
         </div>
         <div class="flex cart justify-end items-center">
           <div class="m-1">
-            <Cart/>
+            <Cart v-if="$route.meta.title"/>
           </div>
         </div>
       </div>
