@@ -1,6 +1,8 @@
 import { RootState } from './interface';
+import config from '@/config'
 
-export const state: RootState = {
+const state: RootState = {
+    products: config.shop.products,
     isModalOpen: false,
     modalData: {
         id: 0,
@@ -16,5 +18,11 @@ export const state: RootState = {
         tags: [''],
         salePrice: 0,
     },
-    cart: []
+    // cart: [],
+    cart: {
+        1: 2,
+        2: 1
+    }
 }
+
+export default state

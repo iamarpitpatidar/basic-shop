@@ -8,7 +8,12 @@
         <div class="text-center table relative align-middle h-full mx-auto">
           <div class="relative table-cell align-middle">
             <button class="product-btn my-2" @click="viewDetails">Quick View</button>
-            <button class="product-btn my-2" @click="addProduct">Add to Cart</button>
+            <button class="product-btn my-2" @click="addProduct" v-if="!cart[item.id]">Add to Cart</button>
+            <div v-else>
+              <button class="product-btn small my-2">-</button>
+              <span class="p-2 font-rajdhani font-bold text-white" style="font-size: 20px">{{ cart[item.id] }}</span>
+              <button class="product-btn small my-2">+</button>
+            </div>
           </div>
         </div>
       </div>
@@ -30,7 +35,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
-import { mapMutations } from "vuex";
+import { mapMutations, mapState } from "vuex";
 import { Product } from "@/types/product";
 
 export default defineComponent({
@@ -38,6 +43,7 @@ export default defineComponent({
     item: Object as PropType<Product>
   },
   computed: {
+    ...mapState(['cart']),
     onSale: function () {
       return this.item.tags.length && this.item.tags.includes('sale')
     },

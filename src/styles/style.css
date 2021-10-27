@@ -4,6 +4,9 @@
     --primary: #6b54b6;
     --hero-image: url('https://eldritch.qodeinteractive.com/wp-content/uploads/2017/06/shop-slider-image-2.jpg') no-repeat;
 }
+* {
+    outline: none;
+}
 body {
     overflow-x: hidden;
 }
@@ -127,6 +130,11 @@ body {
 .product-btn:after {
     bottom: 0;
     left: -14px;
+}
+.product-btn.small {
+    display: inline-block;
+    font-size: 28px;
+    padding: 0 24px;
 }
 
 .navbar, .footer {

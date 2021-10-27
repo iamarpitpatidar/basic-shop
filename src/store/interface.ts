@@ -1,17 +1,22 @@
 export interface RootState {
-    isModalOpen: Boolean,
+    products: Array<Product>
+    isModalOpen: boolean,
     modalData: Product,
-    cart: Array<Product>
+    cart: Order
 }
 
 export interface Product {
-    id: Number,
-    name: String,
-    description: String,
-    price: Number,
-    currency: String,
-    image: String,
-    quantity: Object,
-    tags: [String],
-    salePrice: Number
+    id: number,
+    name: string,
+    description: string,
+    price: number,
+    currency: string,
+    image: string,
+    quantity: object,
+    tags: string[],
+    salePrice: number | null
+}
+
+interface Order {
+    [key: number]: number
 }
