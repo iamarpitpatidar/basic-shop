@@ -68,7 +68,12 @@ export default defineComponent({
       return !!Object.keys(this.cart).length
     },
     cartTotal() {
-      return 0
+      let total = 0
+      this.products.forEach(each => {
+        const price = each.tags.includes('sale') ? each.salePrice : each.price
+        total += price * this.cart[each.id]
+      })
+      return total
     }
   },
   components: {Popover, PopoverButton, PopoverPanel},

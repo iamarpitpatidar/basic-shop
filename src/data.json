@@ -69,7 +69,8 @@
         "min": 5,
         "max": 100
       },
-      "tags": []
+      "tags": [],
+      "salePrice": null
     },
     {
       "id": 6,
@@ -96,7 +97,26 @@
         "min": 5,
         "max": 100
       },
-      "tags": ["soldOut"]
+      "tags": ["soldOut"],
+      "salePrice": null
+    }
+  ],
+  "paymentMethods": [
+    {
+      "name": "bitcoin",
+      "address": "bc1qk0newu780ezsuradcmz55cnpfj882kul5u9s58"
+    },
+    {
+      "name": "ethereum",
+      "address": "0x8a2D849f3bFA1c9cd9D135C76B37BF7432a84019"
+    },
+    {
+      "name": "litecoin",
+      "address": "LTFkbhEAzpUom4ehu1HrYJ4EnM8eVWL453"
+    },
+    {
+      "name": "solana",
+      "address": "6vKQ6E4rQu3fHmfWThKTkeyUaVXSjBtHjJqDyWMhVChc"
     }
   ]
 }

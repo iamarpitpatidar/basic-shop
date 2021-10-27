@@ -1,5 +1,5 @@
 'use strict'
-import { discordURL, facebookURL, products } from './data.json'
+import { discordURL, facebookURL, products, paymentMethods } from './data.json'
 
 export default {
     discordInvite: discordURL,
@@ -7,5 +7,8 @@ export default {
     shop: {
         name: "Riot",
         products: products
+    },
+    payment: {
+        methods: paymentMethods
     }
 }

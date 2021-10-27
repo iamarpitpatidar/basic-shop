@@ -18,10 +18,7 @@ const state: RootState = {
         tags: [''],
         salePrice: 0,
     },
-    cart: {
-        1: 2,
-        2: 1
-    }
+    cart: {}
 }
 
 export default state
