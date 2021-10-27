@@ -3,3 +3,6 @@
 @import 'tailwindcss/components';
 
 @import 'tailwindcss/utilities';
+input[type="radio"]:checked + span {
+    @apply block;
+}

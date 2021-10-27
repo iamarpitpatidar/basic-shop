@@ -12,16 +12,14 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import config from '@/config'
 import Hero from '@/components/Hero.vue'
 import Product from '@/components/shop/Product.vue'
 import ProductModal from "@/components/shop/ProductModal.vue";
+import { mapState } from "vuex";
 
 export default defineComponent({
-  data: function (){
-    return {
-      products: config.shop.products
-    }
+  computed: {
+    ...mapState(['products'])
   },
   components: {
     Hero,

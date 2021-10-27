@@ -16,6 +16,9 @@ const mutations = {
             if (state.cart[productId] === 1) delete state.cart[productId]
             else state.cart[productId] --
         }
+    },
+    deleteFromCart(state:RootState, productId:number) {
+        if (state.cart[productId]) delete state.cart[productId]
     }
 }
 

@@ -18,7 +18,6 @@ const state: RootState = {
         tags: [''],
         salePrice: 0,
     },
-    // cart: [],
     cart: {
         1: 2,
         2: 1
