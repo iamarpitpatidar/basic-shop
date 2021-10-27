@@ -21,9 +21,6 @@ body {
     height: 4.5rem;
     background-color: #111111;
 }
-/*.cart {*/
-/*    max-width: 18rem;*/
-/*}*/
 .hero {
     min-height: 54vh;
     background: var(--hero-image);
@@ -149,19 +146,6 @@ body {
 }
 
 
-/** Media Queries **/
-/*@media (min-width: 340px) {*/
-/*    .cart {max-width: 19rem}*/
-/*}*/
-/*@media (min-width: 360px) {*/
-/*    .cart {max-width: 20rem;}*/
-/*}*/
-/*@media (min-width: 375px) {*/
-/*    .cart {max-width: 21rem;}*/
-/*}*/
-/*@media (min-width: 640px) {*/
-/*    .cart {max-width: 24rem;}*/
-/*}*/
 @media (min-width: 768px) {
     .products {
         grid-template-columns: repeat(auto-fit,minmax(240px,1fr));

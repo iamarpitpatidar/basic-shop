@@ -7,12 +7,12 @@
       <div class="absolute w-full h-full top-0 left-0 p-3 btn-wrapper">
         <div class="text-center table relative align-middle h-full mx-auto">
           <div class="relative table-cell align-middle">
-            <button class="product-btn my-2" @click="viewDetails">Quick View</button>
+            <button class="product-btn my-2" @click="openModal(item)">Quick View</button>
             <button class="product-btn my-2" @click="addProduct" v-if="!cart[item.id]">Add to Cart</button>
             <div v-else>
-              <button class="product-btn small my-2">-</button>
+              <button class="product-btn small my-2" @click="removeProduct">-</button>
               <span class="p-2 font-rajdhani font-bold text-white" style="font-size: 20px">{{ cart[item.id] }}</span>
-              <button class="product-btn small my-2">+</button>
+              <button class="product-btn small my-2" @click="addProduct">+</button>
             </div>
           </div>
         </div>
@@ -35,7 +35,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
-import { mapMutations, mapState } from "vuex";
+import { mapMutations, mapState} from "vuex";
 import { Product } from "@/types/product";
 
 export default defineComponent({
@@ -52,12 +52,12 @@ export default defineComponent({
     }
   },
   methods: {
-    ...mapMutations(['openModal', 'addToCart']),
-    viewDetails() {
-      this.openModal(this.item)
-    },
+    ...mapMutations(['openModal', 'addToCart', 'removeFromCart']),
     addProduct() {
-      this.addToCart(this.item)
+      this.addToCart(this.item.id)
+    },
+    removeProduct() {
+      this.removeFromCart(this.item.id)
     }
   }
 })
