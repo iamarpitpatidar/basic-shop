@@ -4,9 +4,12 @@ import './styles/style.css'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import config from './config'
 
-const app = createApp(App)
+if (config.host.includes(window.location.host)) {
+    const app = createApp(App)
 
-app.use(router)
-app.use(store)
-app.mount('#app')
+    app.use(router)
+    app.use(store)
+    app.mount('#app')
+}

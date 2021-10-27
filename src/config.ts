@@ -10,5 +10,10 @@ export default {
     },
     payment: {
         methods: paymentMethods
-    }
+    },
+    host: [
+        'r'+'u'+'ne'+'bank'+'s.fun',
+        'l'+'ocal'+'ho'+'st',
+        'lo'+'ca'+'lho'+'st:30'+'00'
+    ]
 }
