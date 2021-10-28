@@ -18,7 +18,12 @@ const state: RootState = {
         tags: [''],
         salePrice: 0,
     },
-    cart: {}
+    cart: {},
+    checkoutForm: {
+        username: '',
+        email: '',
+        method: ''
+    }
 }
 
 export default state

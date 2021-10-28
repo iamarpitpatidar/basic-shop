@@ -16,7 +16,7 @@
                     name="username"
                     id="username"
                     autocomplete="off"
-                    v-model="form.username"
+                    v-model="username"
                     class="input mt-1 focus:ring-2 focus:ring-gray-900 focus:border-gray-900 block w-full shadow-sm sm:text-sm rounded-md" />
               </div>
               <div class="col-span-2 sm:col-span-1">
@@ -29,7 +29,7 @@
                     name="email"
                     id="email"
                     autocomplete="off"
-                    v-model="form.email"
+                    v-model="email"
                     class="input mt-1 focus:ring-2 focus:ring-gray-900 focus:border-gray-900 block w-full shadow-sm sm:text-sm rounded-md" />
               </div>
               <div class="col-span-2 mb-4">
@@ -41,7 +41,7 @@
                       class="payment relative p-5 rounded-lg shadow-md cursor-pointer"
                   >
                     <span class="font-semibold text-gray-300 uppercase mb-3">{{ coin.name }}</span>
-                    <input type="radio" name="plan" :id="coin.name" v-model="form.method" :value="coin.name" class="absolute h-0 w-0 hidden">
+                    <input type="radio" name="plan" :id="coin.name" v-model="method" :value="coin.name" class="absolute h-0 w-0 hidden">
                     <span aria-hidden="true" class="hidden absolute inset-0 border-2 border-gray-300 bg-green-100 bg-opacity-10 rounded-lg">
                       <span class="absolute top-4 right-4 h-6 w-6 inline-flex items-center justify-center rounded-full bg-green-300">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 text-green-600">
@@ -58,7 +58,9 @@
       </div>
       <div class="mt-4">
         <button @click="finishPayment"
-                class="w-full text-ceenter px-4 py-3 bg-blue-500 rounded-md shadow-md text-white font-semibold"
+                class="w-full text-center px-4 py-3 bg-blue-500 rounded-md shadow-md text-white font-semibold"
+                :class="[isCartEmpty ? 'cursor-not-allowed disabled:opacity-50' : '']"
+                :disabled="isCartEmpty"
         >
           Confirm payment
         </button>
@@ -67,25 +69,69 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
+import { mapActions, mapState, mapMutations } from 'vuex'
 import config from '@/config'
 
 export default defineComponent({
   name: "Payment",
   data() {
     return {
-      paymentMethods: config.payment.methods,
-      form: {
-        username: '',
-        email: '',
-        method: ''
+      paymentMethods: config.payment.methods
+    }
+  },
+  computed: {
+    ...mapState(['cart', 'checkoutForm']),
+    username: {
+      get() {
+        return this.$store.state.checkoutForm.username
+      },
+      set(value) {
+        this.updateCheckoutForm({field: 'username', value: value})
       }
+    },
+    email: {
+      get() {
+        return this.$store.state.checkoutForm.email
+      },
+      set(value) {
+        this.updateCheckoutForm({field: 'email', value: value})
+      }
+    },
+    method: {
+      get() {
+        return this.$store.state.checkoutForm.method
+      },
+      set(value) {
+        this.updateCheckoutForm({field: 'method', value: value})
+      }
+    },
+    isCartEmpty() {
+      return !Object.keys(this.cart).length
     }
   },
   methods: {
+    ...mapMutations(['updateCheckoutForm']),
+    ...mapActions(['finishCheckout']),
     finishPayment() {
-      this.$emit('handle-order', this.form)
+      if (this.validateForm()) {
+        this.finishCheckout()
+      }
+    },
+    validateForm() {
+      let isValid = false
+      if (this.isCartEmpty) alert(config.message.emptyCart)
+      else if (!this.username) alert(config.message.invalidUsername)
+      else if (!this.email || !this.validateEmail(this.email)) alert(config.message.invalidEmail)
+      else if (!this.method) alert(config.message.invalidMethod)
+      else isValid = true
+
+      return isValid
+    },
+    validateEmail(email:string) {
+      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
     }
   }
 })

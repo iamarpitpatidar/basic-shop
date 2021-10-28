@@ -2,7 +2,8 @@ export interface RootState {
     products: Array<Product>
     isModalOpen: boolean,
     modalData: Product,
-    cart: Order
+    cart: Order,
+    checkoutForm: checkout
 }
 
 export interface Product {
@@ -15,6 +16,12 @@ export interface Product {
     quantity: object,
     tags: string[],
     salePrice: number | null
+}
+
+interface checkout {
+    username: string,
+    email: string,
+    method: string
 }
 
 interface Order {

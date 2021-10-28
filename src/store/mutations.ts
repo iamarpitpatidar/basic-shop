@@ -19,6 +19,9 @@ const mutations = {
     },
     deleteFromCart(state:RootState, productId:number) {
         if (state.cart[productId]) delete state.cart[productId]
+    },
+    updateCheckoutForm(state:RootState, formData: { field: 'username' | 'email' | 'method', value: string }) {
+        state.checkoutForm[formData.field] = formData.value
     }
 }
 
