@@ -16,6 +16,7 @@
                     name="username"
                     id="username"
                     autocomplete="off"
+                    v-model="form.username"
                     class="input mt-1 focus:ring-2 focus:ring-gray-900 focus:border-gray-900 block w-full shadow-sm sm:text-sm rounded-md" />
               </div>
               <div class="col-span-2 sm:col-span-1">
@@ -28,6 +29,7 @@
                     name="email"
                     id="email"
                     autocomplete="off"
+                    v-model="form.email"
                     class="input mt-1 focus:ring-2 focus:ring-gray-900 focus:border-gray-900 block w-full shadow-sm sm:text-sm rounded-md" />
               </div>
               <div class="col-span-2 mb-4">
@@ -39,7 +41,7 @@
                       class="payment relative p-5 rounded-lg shadow-md cursor-pointer"
                   >
                     <span class="font-semibold text-gray-300 uppercase mb-3">{{ coin.name }}</span>
-                    <input type="radio" name="plan" :id="coin.name" value="hobby" class="absolute h-0 w-0 hidden">
+                    <input type="radio" name="plan" :id="coin.name" v-model="form.method" :value="coin.name" class="absolute h-0 w-0 hidden">
                     <span aria-hidden="true" class="hidden absolute inset-0 border-2 border-gray-300 bg-green-100 bg-opacity-10 rounded-lg">
                       <span class="absolute top-4 right-4 h-6 w-6 inline-flex items-center justify-center rounded-full bg-green-300">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 text-green-600">
@@ -73,12 +75,17 @@ export default defineComponent({
   name: "Payment",
   data() {
     return {
-      paymentMethods: config.payment.methods
+      paymentMethods: config.payment.methods,
+      form: {
+        username: '',
+        email: '',
+        method: ''
+      }
     }
   },
   methods: {
     finishPayment() {
-
+      this.$emit('handle-order', this.form)
     }
   }
 })
