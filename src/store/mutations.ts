@@ -22,6 +22,14 @@ const mutations = {
     },
     updateCheckoutForm(state:RootState, formData: { field: 'username' | 'email' | 'method', value: string }) {
         state.checkoutForm[formData.field] = formData.value
+    },
+    clearCheckoutForm(state:RootState) {
+        state.checkoutForm = {
+            username: '',
+            email: '',
+            method: ''
+        }
+        state.cart = {}
     }
 }
 

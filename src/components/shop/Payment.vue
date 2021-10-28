@@ -58,10 +58,20 @@
       </div>
       <div class="mt-4">
         <button @click="finishPayment"
-                class="w-full text-center px-4 py-3 bg-blue-500 rounded-md shadow-md text-white font-semibold"
-                :class="[isCartEmpty ? 'cursor-not-allowed disabled:opacity-50' : '']"
-                :disabled="isCartEmpty"
+                class="flex justify-center items-center w-full text-center px-4 py-3 bg-blue-500 rounded-md shadow-md text-white font-semibold"
+                :class="[disableButton ? 'cursor-not-allowed disabled:opacity-50' : '']"
+                :disabled="disableButton"
         >
+          <svg
+              class="animate-spin mr-3 h-5 w-5 text-white"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              v-if="isLoading"
+          >
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
           Confirm payment
         </button>
       </div>
@@ -82,7 +92,10 @@ export default defineComponent({
     }
   },
   computed: {
-    ...mapState(['cart', 'checkoutForm']),
+    ...mapState(['isLoading', 'cart', 'checkoutForm']),
+    disableButton() {
+      return !Object.keys(this.cart).length || this.isLoading
+    },
     username: {
       get() {
         return this.$store.state.checkoutForm.username
@@ -106,9 +119,6 @@ export default defineComponent({
       set(value) {
         this.updateCheckoutForm({field: 'method', value: value})
       }
-    },
-    isCartEmpty() {
-      return !Object.keys(this.cart).length
     }
   },
   methods: {

@@ -2,6 +2,7 @@ import { RootState } from './interface';
 import config from '@/config'
 
 const state: RootState = {
+    isLoading: false,
     products: config.shop.products,
     isModalOpen: false,
     modalData: {

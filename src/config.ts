@@ -22,6 +22,7 @@ export default {
     },
     message: {
         emptyCart: 'Your cart is empty',
+        webhookError: 'something went wrong, please try again',
         invalidUsername: 'Please enter a valid username',
         invalidEmail: 'Please enter a valid Email',
         invalidMethod: 'Please select a payment method'

@@ -1,6 +1,6 @@
 <template>
   <TransitionRoot appear :show="isModalOpen" as="template">
-    <Dialog as="div" @close="closeModal">
+    <Dialog as="div" @close="close">
       <div class="fixed inset-0 z-10 overflow-y-auto">
         <div class="fixed inset-0 bg-gray-900 bg-opacity-90 transition-opacity" aria-hidden="true"></div>
         <div class="min-h-screen px-4 text-center">
@@ -36,12 +36,12 @@
                   as="h3"
                   class="text-lg font-medium leading-6 text-gray-900"
               >
-                Payment successful
+                Order successful
               </DialogTitle>
               <div class="mt-2">
                 <p class="text-sm text-gray-500">
-                  Your payment has been successfully submitted. We’ve sent you
-                  an email with all of the details of your order.
+                  Your Order has been successfully submitted. <br>
+                  Please make the payment on the following address {{ address }}
                 </p>
               </div>
 
@@ -49,7 +49,7 @@
                 <button
                     type="button"
                     class="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
-                    @click="closeModal"
+                    @click="close"
                 >
                   Got it, thanks!
                 </button>
@@ -72,6 +72,7 @@ import {
   DialogOverlay,
   DialogTitle,
 } from '@headlessui/vue'
+import config from '@/config'
 
 export default defineComponent({
   components: {
@@ -82,10 +83,17 @@ export default defineComponent({
     DialogTitle,
   },
   computed: {
-    ...mapState(['isModalOpen'])
+    ...mapState(['isModalOpen', 'checkoutForm']),
+    address() {
+      return config.payment.methods.filter(each => each.name === this.checkoutForm.method)[0].address
+    }
   },
   methods: {
-    ...mapMutations(['closeModal'])
+    ...mapMutations(['closeModal', 'clearCheckoutForm']),
+    close() {
+      this.closeModal()
+      this.clearCheckoutForm()
+    }
   }
 })
 </script>

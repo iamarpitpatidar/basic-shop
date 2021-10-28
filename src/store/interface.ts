@@ -1,4 +1,5 @@
 export interface RootState {
+    isLoading: boolean,
     products: Array<Product>
     isModalOpen: boolean,
     modalData: Product,
