@@ -1,8 +1,7 @@
 'use strict'
-import { discordURL, facebookURL, products, paymentMethods } from './data.json'
+import { discord, facebookURL, products, paymentMethods } from './data.json'
 
 export default {
-    discordInvite: discordURL,
     facebookInvite: facebookURL,
     shop: {
         name: "Riot",
@@ -11,9 +10,19 @@ export default {
     payment: {
         methods: paymentMethods
     },
-    host: [
-        'r'+'u'+'ne'+'bank'+'s.fun',
-        'l'+'ocal'+'ho'+'st',
-        'lo'+'ca'+'lho'+'st:30'+'00'
-    ]
+    hosts: [
+        'localhost:3000'
+    ],
+    discord: {
+        invite: discord.invite,
+        webhook: {
+            name: "shop",
+            url: discord.webhook
+        }
+    },
+    message: {
+        invalidUsername: 'Please enter a valid username',
+        invalidEmail: 'Please enter a valid Email',
+        invalidMethod: 'Please select a payment method'
+    }
 }

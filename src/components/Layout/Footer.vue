@@ -38,7 +38,7 @@ export default {
   data: function() {
     return {
       name: config.shop.name,
-      discordInvite: config.discordInvite,
+      discordInvite: config.discord.invite,
       facebookInvite: config.facebookInvite
     }
   },

@@ -6,7 +6,7 @@ import router from './router'
 import store from './store'
 import config from './config'
 
-if (config.host.includes(window.location.host)) {
+if (config.hosts.includes(window.location.host)) {
     const app = createApp(App)
 
     app.use(router)

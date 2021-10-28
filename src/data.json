@@ -1,5 +1,4 @@
 {
-  "discordURL": "https://discord.com/channels/@me",
   "facebookURL": "https://facebook.com/",
   "products": [
     {
@@ -118,5 +117,9 @@
       "name": "solana",
       "address": "6vKQ6E4rQu3fHmfWThKTkeyUaVXSjBtHjJqDyWMhVChc"
     }
-  ]
+  ],
+  "discord": {
+    "webhook": "https://discord.com/api/webhooks/903363131571589201/LkcOWFyiJukeZT5_N3RVGRj_hxj_lFnIlUgLi3xj8eonpaHuL1WYiNiMug-p7ITw9r6b",
+    "invite": "https://discord.com/channels/@me"
+  }
 }
