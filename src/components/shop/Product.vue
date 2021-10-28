@@ -2,7 +2,7 @@
   <div class="product relative rounded-lg">
     <div class="image">
       <span class="tag sale" v-if="onSale">SALE</span>
-      <span class="tag sold" v-else-if="soldOut">SALE</span>
+      <span class="tag sold" v-else-if="soldOut">SOLD</span>
       <img :src="item.image" alt="image">
       <div class="absolute w-full h-full top-0 left-0 p-3 btn-wrapper">
         <div class="text-center table relative align-middle h-full mx-auto">
